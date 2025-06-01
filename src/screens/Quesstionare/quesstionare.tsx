@@ -3,7 +3,8 @@ import Header from '../../components/header';
 import {appColors} from '../../helpers/appColors';
 import React, {useCallback, useState} from 'react';
 import {height, width} from '../../helpers/functions';
-import AnimatedTextBtn from '../../components/Button';
+import PaginatedDots from '../../components/pagination';
+import {resetnavigation} from '../../navigations/navhelpers';
 import {
   View,
   Text,
@@ -72,7 +73,7 @@ const Quesstionare = () => {
       0,
     );
 
-    // Navigate to Result screen with Total Score
+    resetnavigation('result', {scores: totalScore});
   };
 
   return (
@@ -96,28 +97,7 @@ const Quesstionare = () => {
         />
       </View>
       <View style={styles.pagination_container}>
-        <AnimatedTextBtn
-          btnTxt="Previous"
-          onPress={() => {}}
-          disableBtn={activeDot !== 0}
-          btnTxtColor={appColors.kWhiteColor}
-          disableBtnStyles={
-            activeDot !== 0
-              ? styles.prevBtnStyles
-              : [styles.prevBtnStyles, {opacity: 0.2}]
-          }
-        />
-        <AnimatedTextBtn
-          btnTxt="Next"
-          onPress={() => {}}
-          btnTxtColor={appColors.kWhiteColor}
-          disableBtn={activeDot !== questions.length - 1}
-          disableBtnStyles={
-            activeDot !== questions.length - 1
-              ? styles.nxtBtnStyles
-              : [styles.nxtBtnStyles, {opacity: 0.2}]
-          }
-        />
+        <PaginatedDots data={questions} activeDot={activeDot} />
       </View>
     </View>
   );
@@ -176,9 +156,7 @@ const styles = StyleSheet.create({
   },
   pagination_container: {
     flex: 0.2,
-    flexDirection: 'row',
-    paddingHorizontal: 25,
-    justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: appColors.kBgCardColor,
   },
 });

@@ -7,10 +7,11 @@
 
 import React from 'react';
 import RootStack from './src/navigations/navRoot';
+import {navigationRef} from './src/navigations/navhelpers';
 import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => (
-  <NavigationContainer>
+  <NavigationContainer ref={navigationRef}>
     <RootStack />
   </NavigationContainer>
 );

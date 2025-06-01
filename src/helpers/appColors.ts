@@ -5,4 +5,5 @@ export const appColors = {
   kBgCardColor: '#162023',
   kBgScreenColor: '#273032',
   kDarkWhiteColor: '#F2F2F7',
+  kScoreCardBorderColor: '#2F3739',
 };
